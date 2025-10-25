@@ -1,4 +1,6 @@
 🩺 MediGuardChain
+
+
 MediGuardChain is a full-stack healthcare and insurance management system built for patients, doctors, pharmacies, and insurers. It provides secure access to medical records, prescription workflows, claim submissions, and blockchain-based audit trails.
 
 🚀 Tech Stack
