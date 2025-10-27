@@ -5,10 +5,17 @@ import { DashboardLayout } from '@/components/dashboard-layout';
 import { useAuth } from '@/lib/auth-context';
 import { Skeleton } from '@/components/ui/skeleton';
 
+type PatientStats = {
+  totalRecords: number;
+  sharedRecords: number;
+  totalInsights: number;
+  blockchainTransactions: number;
+};
+
 export default function PatientDashboard() {
   const { user } = useAuth();
 
-  const { data: stats, isLoading } = useQuery({
+  const { data: stats, isLoading } = useQuery<PatientStats>({
     queryKey: ['/api/patient/stats'],
   });
 

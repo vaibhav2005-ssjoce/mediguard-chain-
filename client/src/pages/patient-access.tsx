@@ -14,7 +14,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 
 export default function PatientAccess() {
   const { toast } = useToast();
-  const { data: records, isLoading: recordsLoading } = useQuery({
+  const { data: records, isLoading: recordsLoading } = useQuery<any[]>({
     queryKey: ['/api/medical-records'],
   });
   
@@ -78,7 +78,8 @@ export default function PatientAccess() {
   };
 
   const getPermissionsForRecord = (recordId: string) => {
-    return permissions?.filter((p: any) => p.recordId === recordId) || [];
+    const perms = permissions as any[] | undefined;
+    return perms?.filter((p: any) => p.recordId === recordId) || [];
   };
 
   const isLoading = recordsLoading || permissionsLoading;

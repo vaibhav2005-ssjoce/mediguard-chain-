@@ -24,7 +24,7 @@ export default function PatientRecords() {
     file: null as File | null,
   });
 
-  const { data: records, isLoading } = useQuery({
+  const { data: records, isLoading } = useQuery<any[]>({
     queryKey: ['/api/medical-records'],
   });
 

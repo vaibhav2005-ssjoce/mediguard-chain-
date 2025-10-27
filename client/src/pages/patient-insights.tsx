@@ -8,11 +8,21 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { format } from 'date-fns';
 
 export default function PatientInsights() {
-  const { data: insights, isLoading } = useQuery({
+  type Insight = {
+    id: string;
+    title: string;
+    description: string;
+    severity: string;
+    isRead?: boolean;
+    recommendations?: string;
+    createdAt: string;
+  };
+
+  const { data: insights, isLoading } = useQuery<Insight[]>({
     queryKey: ['/api/health-insights'],
   });
 
-  const getSeverityColor = (severity: string) => {
+  const getSeverityColor = (severity: string): "default" | "destructive" | null => {
     switch (severity) {
       case 'critical':
       case 'high':
@@ -20,9 +30,8 @@ export default function PatientInsights() {
       case 'medium':
         return 'default';
       case 'low':
-        return 'secondary';
       default:
-        return 'outline';
+        return null;
     }
   };
 

@@ -6,8 +6,20 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 
+interface Claim {
+  id: string;
+  claimType: string;
+  status: string;
+  policyProvider: string;
+  claimAmount: number;
+  description: string;
+  reviewNotes?: string;
+  submittedAt: string;
+  blockchainHash: string;
+}
+
 export default function InsuranceClaims() {
-  const { data: claims, isLoading } = useQuery({
+  const { data: claims, isLoading } = useQuery<Claim[]>({
     queryKey: ['/api/claims'],
   });
 

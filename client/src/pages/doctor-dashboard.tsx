@@ -11,7 +11,14 @@ export default function DoctorDashboard() {
   const { user } = useAuth();
   const [, setLocation] = useLocation();
 
-  const { data: stats, isLoading } = useQuery({
+  interface DoctorStats {
+    totalPrescriptions: number;
+    pendingPrescriptions: number;
+    dispensedPrescriptions: number;
+    totalPatients: number;
+  }
+
+  const { data: stats, isLoading } = useQuery<DoctorStats>({
     queryKey: ['/api/doctor/stats'],
   });
 

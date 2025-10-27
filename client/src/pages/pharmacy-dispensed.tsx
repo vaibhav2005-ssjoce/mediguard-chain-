@@ -13,7 +13,9 @@ export default function PharmacyDispensed() {
     queryKey: ['/api/prescriptions'],
   });
 
-  const dispensedByMe = prescriptions?.filter((p: any) => p.dispensedById === user?.id && p.status === 'dispensed') || [];
+  const dispensedByMe = (Array.isArray(prescriptions) ? prescriptions : []).filter(
+    (p: any) => p.dispensedById === user?.id && p.status === 'dispensed'
+  );
 
   return (
     <DashboardLayout role="pharmacy">

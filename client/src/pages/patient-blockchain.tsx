@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 
 export default function PatientBlockchain() {
-  const { data: transactions, isLoading } = useQuery({
+  const { data: transactions, isLoading } = useQuery<any[]>({
     queryKey: ['/api/blockchain/transactions'],
   });
 

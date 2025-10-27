@@ -264,7 +264,7 @@ export default function Register() {
           <div className="mt-6 text-center text-sm">
             <span className="text-muted-foreground">Already have an account? </span>
             <Button
-              variant="link"
+              variant="ghost"
               className="p-0"
               onClick={() => setLocation('/login')}
               data-testid="link-login"

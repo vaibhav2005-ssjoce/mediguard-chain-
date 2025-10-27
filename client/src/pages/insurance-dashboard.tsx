@@ -11,7 +11,12 @@ export default function InsuranceDashboard() {
   const { user } = useAuth();
   const [, setLocation] = useLocation();
 
-  const { data: stats, isLoading } = useQuery({
+  const { data: stats, isLoading } = useQuery<{
+    totalClaims: number;
+    pendingClaims: number;
+    approvedClaims: number;
+    rejectedClaims: number;
+  }>({
     queryKey: ['/api/insurance/stats'],
   });
 

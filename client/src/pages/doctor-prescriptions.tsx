@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 
 export default function DoctorPrescriptions() {
-  const { data: prescriptions, isLoading } = useQuery({
+  const { data: prescriptions, isLoading } = useQuery<any[]>({
     queryKey: ['/api/prescriptions'],
   });
 

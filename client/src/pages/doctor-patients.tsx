@@ -8,6 +8,10 @@ import { Badge } from '@/components/ui/badge';
 export default function DoctorPatients() {
   const { data: prescriptions, isLoading } = useQuery({
     queryKey: ['/api/prescriptions'],
+    queryFn: async () => {
+      const response = await fetch('/api/prescriptions');
+      return response.json();
+    }
   });
 
   // Extract unique patients from prescriptions
